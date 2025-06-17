@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Download Reels</title>
+<style>
+body {
+    font-family: Arial,sans-serif;
+    padding: 20px;
+    color: #333;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 80%;
+    font-size: 1rem;
+}
+
+button {
+    padding: 10px 20px;
+    background: #ff5e5e;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background: #ff9e9e;
+    cursor: not-allowed;
+}
+
+.spinner {
+    display: none;
+    margin-bottom: 10px;
+    color: #ff5e5e;
+}
+
+.spinner.active {
+    display: block;
+}
+</style>
+</head>
+<body>
+
+<h2>Download Reels/Video</h2>
+<input id="url" placeholder="Paste video URL here">
+<button id="downloadBtn" onclick="fetchVideo()">Download</button>
+<div class="spinner" id="spinner">Downloading...</div>
+
+<script>
+async function fetchVideo(){
+    const url = document.getElementById('url').value.trim();
+
+    if (!url) {
+        alert('Please enter a video URL first');
+        return;
+    }
+    document.getElementById('spinner').classList.add('active');  
+    document.getElementById('downloadBtn').disabled = true;
+
+    try {
+        const res = await fetch('/api/download?url=' + encodeURIComponent(url)); 
+        const data = await res.json();
+
+        if (data?.download_url) {
+            window.location = data.download_url;
+        } else {
+            alert('Unable to fetch video');
+        }
+    } catch (err) {
+        console.error(err);
+        alert('Error downloading video');
+    } finally {
+        document.getElementById('spinner').classList.remove('active');  
+        document.getElementById('downloadBtn').disabled = false;
+    }
+}
+</script>
+
+</body>
+</html>
