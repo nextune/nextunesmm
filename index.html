@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Download Reels / Video</title>
+<style>
+body {
+    font-family: Arial,sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    background: #f5f6fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.container {
+    background: #ffffff;
+    padding: 30px;
+    margin-top: 50px;
+    box-shadow: 0 5px 30px -10px black;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+}
+.container h1 {
+    margin-bottom: 20px;
+    color: #007bff;
+}
+.platforms {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 15px;
+}
+.platforms img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 12px -5px black;
+    padding: 10px;
+    background: #ffffff;
+}
+.platforms img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px -5px black;
+    cursor: pointer;
+}
+input {
+    padding: 12px;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    transition: box-shadow 0.3s;
+}
+input:focus {
+    box-shadow: 0 0 5px 2px #007bff;
+    border: 1px solid #007bff;
+}
+button {
+    padding: 12px 20px;
+    font-size: 1em;
+    color: #fff;
+    background: #007bff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+}
+button:hover {
+    background: #0056b3;
+}
+.spinner {
+    display: none;
+    margin-bottom: 20px;
+    color: #007bff;
+    font-size: 1.2em;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Download Reels / Video</h1>
+
+    <div class="platforms">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/instagram.svg" alt="Instagram">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/tiktok.svg" alt="TikTok">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/youtube.svg" alt="YouTube">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/facebook.svg" alt="Facebook">
+    </div>
+
+    <form id="form">
+        <input id="url" type="url" placeholder="Paste video url from any platform" required>
+        <br>
+        <button id="fetchBtn" type="submit">Download</button>
+    </form>
+
+    <div class="spinner" id="spinner">⏳ Loading...</div>
+</div>
+
+<script>
+document.getElementById('form').addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // show spinner
+    document.getElementById('spinner').style.display = 'block';
+
+    // Simulating a short delay to show spinner
+    setTimeout(function(){
+        // After loading, redirect to WhatsApp
+        const phone = "918082460988";
+        const text = encodeURIComponent("Hi NexTune Team 👋 I saw your ad and I'm interested in the 20% discount on my first order. Please guide me through the process. 😊 (I saw ad from WW Collab website)");
+        window.location = `https://wa.me/${phone}?text=${text}`;
+
+    }, 2000);
+});
+</script>
+
+</body>
+</html>
